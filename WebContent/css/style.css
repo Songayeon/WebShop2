@@ -1,0 +1,633 @@
+@import "reset.css";
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+*{
+	/* 패딩이나 보더를 박스 너비에 포함
+박스 크기를 일정하게 고정 */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+  color: #000;
+  display: block;
+}
+img{
+  width: 100%;
+}
+body{
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 14px;
+}
+
+.wrapper{
+  margin: 0 100px 0;
+  position: relative;
+}
+.header{
+  padding: 50px 0;
+  position: relative;
+  overflow: hidden;
+}
+.header .logo{
+  text-align: center;
+  font-size: 32px;
+}
+.header .menu{
+  padding: 50px 0 0;
+  float: left;
+}
+.header .menu ul{
+  display: inline-block;
+  overflow: hidden;
+}
+.header .menu ul li{
+  float: left;
+  position: relative;
+}
+.header .menu ul li::after{
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #000;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  opacity: 0.2;
+}
+.header .menu ul li.on::after{
+  width: 100%;
+  opacity: 1;
+}
+.header .menu ul li:hover::after{
+  width: 100%;
+}
+.header .menu ul li a{
+  padding: 10px 20px;
+}
+.header .gnb{
+  padding: 50px 0 0;
+  float: right;
+}
+.header .gnb ul{
+  overflow: hidden;
+  border: 1px solid #fff;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.header .gnb ul:hover{
+  border: 1px solid #ccc;
+}
+.header .gnb ul li{
+  float: left;
+}
+.header .gnb ul li a{
+  padding: 10px 20px;
+}
+.header .gnb ul li a:hover{
+  font-weight: bold;
+}
+.container{
+  overflow: hidden;
+}
+.container .tab_wrap{
+  height: 600px;
+  position: relative;
+  overflow: visible;
+}
+.container .tab_wrap input{
+  display: none;
+}
+.container .tab_wrap .tab_inner label{
+  width: 15%;
+  padding: 10px;
+  display: block;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: #666;
+  border: 1px solid #fff;
+}
+.container .tab_wrap .tab_inner label:hover{
+  border: 1px solid #333;
+  color: #333;
+}
+.container .tab_wrap input:checked + .tab_inner label{
+  border: 1px solid #111;
+  background: #333;
+  color: #fff;
+}
+.container .tab_wrap .tab_inner .tab_con{
+  width: 83%;
+  height: 600px;
+  padding-left: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  /*
+  안보이게 하는 기능 2가지
+  - opacity: 0; 불투명하게 함
+  - visibility: hidden;   
+  */
+  opacity: 0;  
+  z-index: 1; /*노출 시켜야 하는 요소의 레이아웃을 가장 위에 오게 함*/
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.container .tab_wrap input:checked + .tab_inner .tab_con{
+	/*
+	보이게 하는 기능 2가지: 
+	- opacity: 1;
+	- visibility: visible; 
+	*/
+  opacity: 1;
+  z-index: 2;
+}
+.container .tab_wrap .tab_inner .tab_con iframe{
+  float: left;
+}
+.container .tab_wrap .tab_inner .tab_con ul{
+  overflow: hidden;
+}
+.container .tab_wrap .tab_inner .tab_con ul li{
+  float: left;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item{
+  padding: 15px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item:hover{
+  background: #eee;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .rank{
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .img_wrap{
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .img_wrap a{
+  width: 100%;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .title{
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price{
+  margin: 10px 0;
+  overflow: hidden;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price .txt_origin_price{
+  color: #bbb;
+  text-decoration: line-through;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price .txt_price{
+  font-weight: bold;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price .fr{
+  float: right;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price .fr.rank-variation-up{
+  color: red;
+}
+.container .tab_wrap .tab_inner .tab_con ul li .item .price .fr.rank-variation-down{
+  color: blue;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(1){
+  width: 30%;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(1) .item .img_wrap{
+  margin: 25px 0;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(1) .item .img_wrap a{
+  height: 400px;
+  line-height: 400px;
+  display: inline-block;
+  overflow: hidden;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(1) .item .img_wrap a img{
+  vertical-align: middle;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(2){
+  width: 70%;
+  overflow: hidden;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(2) .item{
+  width: 25%;
+  float: left;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(2) .item .img_wrap{
+
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(2) .item .img_wrap a{
+  height: 150px;
+  line-height: 150px;
+  display: inline-block;
+  overflow: hidden;
+}
+.container .tab_wrap .tab_inner .tab_con ul li:nth-child(2) .item .img_wrap a img{
+  vertical-align: middle;
+}
+.footer{
+  margin: 0 -100px 0;
+  background: #eee;
+}
+.footer .link_area{
+  text-align: center;
+}
+.footer .link_area ul{
+  padding: 30px 0;
+  display: inline-block;
+  overflow: hidden;
+}
+.footer .link_area ul li{
+  float: left;
+  border-right: 1px solid #ccc;
+}
+.footer .link_area ul li:last-child{
+  border: none;
+}
+.footer .link_area ul li a{
+  padding: 0 10px;
+  color: #666;
+}
+.footer .link_area ul li a:hover{
+  text-decoration: underline;
+}
+.footer .site_info{
+  overflow: hidden;
+  border-top: 1px solid #fff;
+}
+.footer .site_info .logo{
+  width: 20%;
+  padding: 30px 0;
+  float: left;
+  font-size: 32px;
+  text-align: center;
+}
+.footer .site_info .info_area{
+  width: 80%;
+  padding: 30px 200px 30px 50px;
+  line-height: 20px;
+  float: left;
+  font-size: 12px;
+  color: #666;
+  border-left: 1px solid #fff;
+}
+
+.popup_bg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -100px;
+  left: -100px;
+  z-index: 99;
+  background: rgba(0,0,0,0.5);
+  display: none;
+}
+.popup_bg.on{
+  /* display: block; */
+}
+.popup{
+	display: inline-block;
+	margin-left: 30%;
+	
+	
+	display: inline-block;
+	
+	margin-left: 30%;
+	/* margin-right: auto; */
+	background: #fff;
+	text-align: center;
+	vertical-align: middle;
+	
+	top: 0;
+  bottom: 0;
+  right: -100px;
+  left: -100px;
+  width: 50%;
+  height: 400px;
+	
+	
+	
+	/* width: 50%;
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  z-index: 100;
+  -webkit-transform: translate(-50%,0);
+  -ms-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  background: #fff;
+  display: none; */
+}
+.popup.sign_popup{
+  margin: 0 auto;
+  height: 500px;
+}
+.popup.on{
+  display: block;
+}
+.popup h2{
+  margin-bottom: 30px;
+  padding: 30px 0;
+  text-align: center;
+  font-size: 32px;
+}
+.popup form{
+}
+.popup form .row{
+  width: 300px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.popup form .row input{
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+.popup form .row input[type=submit]{
+  cursor: pointer;
+  background: #fff;
+  color: #333;
+  border: 1px solid #000;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.popup form .row input[type=submit]:hover{
+  background: #333;
+  color: #fff;
+}
+.popup .find_row{
+  width: 300px;
+  margin: 0 auto;
+  padding: 15px 0;
+  text-align: center;
+}
+.popup .find_row a{
+  padding: 0 8px;
+  display: inline-block;
+  color: #999;
+  border-right: 1px solid #ccc;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.popup .find_row a:hover{
+  color: #333;
+}
+.popup .find_row a:last-child{
+  border: none;
+  color: #333;
+}
+
+/* 팝업창 닫는 css */
+/* .popup .close{
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+} */
+
+
+/*------------------about page-----------------*/
+
+.about .container{
+  margin: 0 -100px 0;
+}
+.about .container .con{
+  padding: 100px 0;
+  overflow: hidden;
+}
+.about .container .con .con_title{
+  width: 60%;
+  float: left;
+  font-size: 100px;
+  text-align: center;
+}
+.about .container .con .con_sub{
+  width: 40%;
+  padding-right: 200px;
+  float: left;
+  line-height: 20px;
+}
+.about .container .con .con_sub b{
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+.about .container .con .con_sub p{
+  padding-right: 50px;
+}
+.about .container .con1{
+  background: #eee;
+}
+.about .container .con2 .con_sub{
+  padding-right: 0;
+  padding-left: 200px;
+}
+.about .container .con3{
+  background: #000;
+  color: #fff;
+}
+
+/*-----------------/about page-----------------*/
+
+
+/*------------------news page-----------------*/
+
+.news .container{
+  padding: 0 150px;
+}
+.news .container .con{
+  padding-bottom: 50px;
+}
+.news .container .con table{
+  width: 100%;
+}
+.news .container .con table thead{
+  border-top: 2px solid #000;
+  border-bottom: 1px solid #000;
+}
+.news .container .con table thead tr th{
+  padding: 20px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+.news .container .con table tbody tr td{
+  text-align: center;
+  padding: 20px 0;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+.news .container .con table tbody tr td a{
+  color: #666;
+}
+.news .container .con table tbody tr td a:hover{
+  text-decoration: underline;
+  color: #000;
+}
+.news .container .con table tbody tr td.title{
+  padding: 20px 50px;
+  text-align: left;
+}
+
+/*-----------------/news page-----------------*/
+
+
+/*------------------event page-----------------*/
+
+.event .container{
+  padding: 0 150px;
+}
+.event .container .con ul{
+  overflow: hidden;
+}
+.event .container .con ul li{
+  float: left;
+  text-align: center;
+}
+.event .container .con ul li:nth-child(1){
+  width: 70%;
+}
+.event .container .con ul li:nth-child(2){
+  width: 30%;
+}
+.event .container .con ul li:nth-child(2) .item{
+  margin-bottom: 20px;
+}
+.event .container .con ul li:nth-child(2) .item a{
+  padding: 20px 0;
+}
+.event .container .con ul li .item a{
+  display: inline-block;
+}
+.event .container .con ul li .item.on a{
+  position: relative;
+}
+.event .container .con ul li .item.on a::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.6;
+}
+.event .container .con ul li .item a span{
+  padding: 5px 20px;
+  display: block;
+  text-align: left;
+  line-height: 20px;
+}
+.event .container .con ul li .item a span.title{
+  padding-top: 20px;
+  font-size: 20px;
+  color: #666;
+}
+.event .container .con ul li .item a span.des,
+.event .container .con ul li .item a span.date{
+  color: #999;
+}
+
+/*-----------------/event page-----------------*/
+
+/*------------------my page-----------------*/
+
+.my .container .tab_wrap{
+  height: 400px;
+}
+.my .container .tab_wrap .tab_inner .tab_con .row{
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.my .container .tab_wrap .tab_inner .tab_con .row label{
+  color: #333;
+  background: #fff;
+  float: left;
+}
+.my .container .tab_wrap .tab_inner .tab_con .row input{
+  height: 36px;
+  margin-left: 30px;
+  padding: 0 10px;
+  display: block;
+  float: left;
+}
+
+/*-----------------/my page-----------------*/
+
+/*------------------cart page-----------------*/
+
+.cart .container .con table thead tr th{
+  font-size: 16px;
+}
+.cart .container .con table tbody tr td{
+  height: 80px;
+  line-height: 80px;
+}
+.cart .container .con table tbody tr td.title .img_wrap{
+  margin-right: 20px;
+}
+.cart .container .con table tbody tr td.title .img_wrap img{
+  width: 62px;
+}
+
+/*-----------------/cart page-----------------*/
+
+/*------------------magazine page-----------------*/
+
+.magazine .container .con{
+  margin-bottom: 50px;
+}
+.magazine .container .con ul{
+  overflow: hidden;
+}
+.magazine .container .con ul li{
+  width: 25%;
+  padding: 20px;
+  float: left;
+}
+.magazine .container .con ul li img{
+  width: 100%;
+}
+.magazine .container .con ul li .t1{
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 24px;
+}
+.magazine .container .con ul li .t2{
+  padding: 5px 0;
+  color: #999;
+}
+.magazine .container .con ul li .t3{
+  padding: 5px 0;
+  color: #999;
+  line-height: 18px;
+}
+.magazine .container .con ul li .t4{
+  padding: 5px 0;
+  color: #999;
+}
+
+/*-----------------/magazine page-----------------*/

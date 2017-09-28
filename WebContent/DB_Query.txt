@@ -1,0 +1,13 @@
+CREATE TABLE WebShop(
+    NAME VARCHAR2(20),
+    USERID VARCHAR2(20) PRIMARY KEY,
+    PWD VARCHAR2(20),
+    EMAIL VARCHAR2(20),
+    PHONE VARCHAR2(20),
+    ADMIN NUMBER(1)
+    );
+
+INSERT INTO WEBSHOP VALUES('손가연', 'son', '1234', 'son@mail.com', '010-111-1111', '1');
+INSERT INTO WEBSHOP VALUES('한범석', 'han', '1234', 'han@mail.com', '010-222-2222', '0');
+
+SELECT * FROM WebShop;
