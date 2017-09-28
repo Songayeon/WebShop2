@@ -7,7 +7,7 @@ CREATE TABLE WebShop(
     ADMIN NUMBER(1)
     );
 
-INSERT INTO WEBSHOP VALUES('손가연', 'son', '1234', 'son@mail.com', '010-111-1111', '1');
+INSERT INTO WEBSHOP VALUES('손가연', 'son', '1234', 'flytothemoon_0507@naver.com', '010-111-1111', '1');
 INSERT INTO WEBSHOP VALUES('한범석', 'han', '1234', 'han@mail.com', '010-222-2222', '0');
 
 SELECT * FROM WebShop;
